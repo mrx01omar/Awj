@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --purple-primary: #410099;
+  --purple-violet: #8000ff;
+  --black: #000000;
+  --orange: #faaa65;
+  --green: #7bc24e;
+  --blue: #009ade;
+  --border-animation-time: 0.8s;
+}
+
+@theme {
+  --color-background: var(--background);
+  --font-pragmatica-medium: var(--font-pragmatica-medium);
+  --font-pragmatica-bold: var(--font-pragmatica-bold);
+
+  --color-primary: var(--purple-primary);
+  --color-secondary: var(--purple-violet);
+  --color-accent-orange: var(--orange);
+  --color-accent-green: var(--green);
+  --color-accent-blue: var(--blue);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  font-family: var(--font-pragmatica-medium);
+  color: var(--black);
+}
+
+.font-pragmatica-medium {
+  font-family: var(--font-pragmatica-medium);
+}
+
+.font-pragmatica-bold {
+  font-family: var(--font-pragmatica-bold);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center px-6 py-3 relative transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.9);
+}
+
+.btn:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-primary {
+  @apply bg-[var(--purple-primary)] text-white;
+  box-shadow: 0 4px 14px rgba(65, 0, 153, 0.2);
+}
+
+.btn-primary::before {
+  background: linear-gradient(45deg, var(--purple-violet), #6a11cb);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(106, 17, 203, 0.4);
+}
+
+.btn-secondary {
+  @apply bg-white text-[var(--purple-primary)] border border-[var(--purple-primary)];
+}
+
+.btn-secondary::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  color: var(--purple-violet);
+  border-color: var(--purple-violet);
+  transform: translateY(-3px);
+}
+
+/* Special hero button styling */
+.hero-btn.btn-secondary {
+  @apply bg-white text-[var(--purple-primary)];
+  border: 2px solid white;
+}
+
+.hero-btn.btn-secondary::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--purple-violet);
+  transform: translateY(-3px);
+}
+
+.section-heading {
+  @apply text-4xl md:text-5xl font-pragmatica-bold mb-6;
+}
+
+.section-subheading {
+  @apply text-xl md:text-2xl mb-8 max-w-3xl mx-auto;
+}
+
+.play-button-icon {
+  @apply ml-2 w-4 h-4;
+}
+
+#about,
+#work,
+#clients,
+#workPage,
+#workDetailsPage {
+  background-color: white;
+}
